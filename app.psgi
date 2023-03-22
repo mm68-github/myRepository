@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Carp;
 
-use HTML::Template;
 use Plack::App::Path::Router::PSGI;
 use Path::Router;
 use Plack::Request;
@@ -31,9 +30,9 @@ sub root {
 <body>
   <h2>$title</h2>
 <ul>
-    <form method="POST" action="/confirm" enctype="multipart/form-data">
+    <form method="POST" action="/confirm">
     <li><input type="text" name="user_name" placeholder="氏名(必須)" required></li>
-    <li><input type="text" name="user_age" placeholder="年齢(必須)" required></li>
+    <li><input type="number" name="user_age" placeholder="年齢(必須)" required></li>
     <li>
     職業
     <div>
@@ -45,12 +44,12 @@ sub root {
     </div>
     </li>
     <li>
-	よく飲むお酒(複数選択可)
+	  よく飲むお酒(複数選択可)
     <div>
-	<label for="beer"><input id="beer" type="checkbox" name="drink1" value="ビール">ビール </label>
-	<label for="wine"><input id="wine" type="checkbox" name="drink2" value="ワイン">ワイン </label>
-	<label for="champagne"><input id="champagne" type="checkbox" name="drink3" value="シャンパン">シャンパン </label>
-	<label for="sake"><input id="sake" type="checkbox" name="drink4" value="日本酒">日本酒 </label>
+    <label for="beer"><input id="beer" type="checkbox" name="drink1" value="ビール">ビール </label>
+    <label for="wine"><input id="wine" type="checkbox" name="drink2" value="ワイン">ワイン </label>
+    <label for="champagne"><input id="champagne" type="checkbox" name="drink3" value="シャンパン">シャンパン </label>
+    <label for="sake"><input id="sake" type="checkbox" name="drink4" value="日本酒">日本酒 </label>
     <label for="shaoxing"><input id="shaoxing" type="checkbox" name="drink5" value="紹興酒">紹興酒 </label>
     <label for="shochu"><input id="shochu" type="checkbox" name="drink6" value="焼酎">焼酎 </label>
     <label for="whisky"><input id="whisky" type="checkbox" name="drink7" value="ウイスキー">ウイスキー </label>
@@ -97,7 +96,7 @@ sub confirm {
 </head>
 <body>
 <h2>回答内容をご確認ください</h2>
-<form method="POST" action="/finish" enctype="multipart/form-data">
+<form method="POST" action="/finish">
 <table>
   <tbody>
     <tr>
