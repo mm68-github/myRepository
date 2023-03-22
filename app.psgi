@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use Carp;
 
+use HTML::Template;
 use Plack::App::Path::Router::PSGI;
 use Path::Router;
 use Plack::Request;
@@ -31,7 +32,6 @@ sub root {
   <h2>$title</h2>
 <ul>
     <form method="POST" action="/confirm" enctype="multipart/form-data">
-    <p>
     <li><input type="text" name="user_name" placeholder="氏名(必須)" required></li>
     <li><input type="text" name="user_age" placeholder="年齢(必須)" required></li>
     <li>
@@ -62,7 +62,6 @@ sub root {
     <input type="text" name="about_drink" placeholder="入力してください">
     </div>
     </li>
-    </p>
     <button type="submit">回答する</button>
     </form>
 </ul>
